@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="" method="POST">
+    <textarea name="note" id="note" class="form-control custom-textarea mt-4" ></textarea>
+    <br><br>
+    <div class="text-center">
+        <button style="margin-bottom: 4rem; padding: 0.7rem 1.5rem; font-size: 1.1rem;" type="submit" class="btn btn-dark">
+            Add Note
+        </button>
+    </div>
+</form>
+<legend class="mb-4" style="font-size: 2.5rem; font-weight: 500;">Your Notes</legend>
+<ul class="list-group list-group-flush" id="notes">
+    {% for note in user.notes %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <h5>{{ note.data }}</h5>
+            <button type="button" class="btn btn-danger" onclick="deleteNote({{ note.id }})">DELETE</button>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock content%}
